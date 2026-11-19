@@ -264,19 +264,4 @@ python3 -m unittest discover -s tests -v
 
 Expected: all six tests pass.
 
-## 12. What to say to the teacher
 
-**Opening explanation:**
-
-"Our project is a Network Resource Reservation System. It allows multiple hosts to request a temporary amount of bandwidth through TCP. The reservation server checks the total capacity, accepts a request only when enough capacity is available, and rejects conflicting requests. For an accepted reservation, the server sends the new allocation to an OS-Ken SDN controller. The controller updates Open vSwitch QoS queues and OpenFlow rules. We use Mininet to emulate the hosts and switch on one Ubuntu machine."
-
-**While showing the demo:**
-
-1. `pingall`: "This proves that the Mininet hosts are connected."
-2. First and second reservations: "The server accepted both requests because their combined 70 Mbps is below the 100 Mbps capacity."
-3. Third reservation: "This request is rejected because it would exceed the available 30 Mbps."
-4. `status`: "This displays total, reserved and available bandwidth and utilisation."
-5. QoS and flow commands: "These show the network-side policies installed by the SDN controller."
-6. Release and expiry: "Both operations return reserved capacity to the available pool and cause the controller policy to be recalculated."
-
-**Important limitation to state honestly:** This prototype demonstrates reservations on its fixed four-host, one-switch Mininet topology. The QoS policy is applied to traffic leaving the switch toward h4; it is not a reservation on the university's physical network.
